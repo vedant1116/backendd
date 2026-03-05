@@ -7,7 +7,7 @@ const App = () => {
   const [notes, setnotes] = useState([])
 
  function fetchData(){
-    axios.get('http://localhost:3000/api/notes').then((res)=>{
+    axios.get('https://backendd-tya8.onrender.com/api/notes').then((res)=>{
     setnotes(res.data.notes)
   })
 
@@ -20,7 +20,7 @@ function submitHandler(e){
  e.preventDefault();
  const title=e.target.title.value;
   const content=e.target.content.value;
-  axios.post('http://localhost:3000/api/notes',{title,content}).then(()=>{
+  axios.post('https://backendd-tya8.onrender.com/api/notes',{title,content}).then(()=>{
     console.log(" note added successfully ");
     fetchData()
   })
@@ -30,7 +30,7 @@ function submitHandler(e){
 function deleteHandler(noteId){
   console.log(noteId);
   
-  axios.delete('http://localhost:3000/api/notes/'+noteId).then((res)=>{
+  axios.delete('https://backendd-tya8.onrender.com/api/notes/'+noteId).then((res)=>{
     console.log("note deleted successfully");
     fetchData()
     
@@ -41,7 +41,7 @@ function deleteHandler(noteId){
 function updateHandler(noteId){
   console.log(noteId);
 
-  axios.patch('http://localhost:3000/api/notes/'+noteId,{content:prompt("Enter new content")}).then((res)=>{    
+  axios.patch('https://backendd-tya8.onrender.com/api/notes/'+noteId,{content:prompt("Enter new content")}).then((res)=>{    
 
     console.log("note updated successfully");
     fetchData()
